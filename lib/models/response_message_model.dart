@@ -8,10 +8,14 @@ class ResponseMessageModel extends BaseMessageModel {
   final String time;
   final String title;
   final String clientMessageId;
+  final String text;
+  final String username;
   final List<MenuItemModel> menu;
 
   ResponseMessageModel(
       {required this.id,
+      required this.text,
+      required this.username,
       required this.chatId,
       required this.messageId,
       required this.time,
@@ -30,6 +34,8 @@ class ResponseMessageModel extends BaseMessageModel {
       time: json['ctime'] ?? "",
       title: json['title'] ?? "",
       clientMessageId: json['client_message_id'] ?? "",
+      text: json['text'] ?? "",
+      username: json['username'] ?? "",
       menu: List<MenuItemModel>.from(
         menu.map(
           (e) => MenuItemModel.fromJson(e),
