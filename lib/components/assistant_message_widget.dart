@@ -4,28 +4,29 @@ import 'package:intl/intl.dart';
 class AssistantMessageWidget extends StatelessWidget {
   final String text;
   final DateTime time;
+  final Alignment alignment;
 
   const AssistantMessageWidget(
-      {super.key, required this.text, required this.time});
+      {super.key, required this.text, required this.time, required this.alignment});
 
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: Alignment.centerLeft,
+      alignment: alignment,
       child: UnconstrainedBox(
         child: Container(
           margin: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
           padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 15),
-          decoration: const BoxDecoration(
+          decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30),
-              topRight: Radius.circular(30),
-              bottomRight: Radius.circular(30),
+              topLeft: const Radius.circular(30),
+              topRight: const Radius.circular(30),
+              bottomRight: alignment == Alignment.centerLeft ? const Radius.circular(30) : Radius.zero,
+              bottomLeft: alignment == Alignment.centerRight ? const Radius.circular(30) : Radius.zero,
             ),
           ),
           child: Column(
-            //mainAxisSize: MainAxisSize.min,
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(

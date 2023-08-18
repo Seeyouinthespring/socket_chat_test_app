@@ -4,12 +4,14 @@ class RequestMessageModel extends BaseMessageModel {
   final String clientMessageId;
   final String chatId;
   final String text;
+  final String time;
 
   RequestMessageModel(
       {required super.action,
       required this.clientMessageId,
       required this.chatId,
-      required this.text});
+      required this.text,
+      required this.time,});
 
   factory RequestMessageModel.fromJson(Map<String, dynamic> json) =>
       RequestMessageModel(
@@ -17,6 +19,7 @@ class RequestMessageModel extends BaseMessageModel {
         clientMessageId: json['client_message_id'] ?? "",
         chatId: json['chat_id'] ?? "",
         text: json['text'] ?? "",
+        time: json['ctime'] ?? "",
       );
 
   Map<String, dynamic> toJson() {
